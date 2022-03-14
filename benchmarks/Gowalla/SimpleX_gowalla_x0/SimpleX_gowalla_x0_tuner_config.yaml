@@ -1,14 +1,14 @@
 base_config: ../config/
 base_expid: SimpleX_base
-dataset_id: amazonbooks_x0
+dataset_id: gowalla_x0
 
 dataset_config:
-    amazonbooks_x0:
-        data_root: ../data/AmazonBooks/
+    gowalla_x0:
+        data_root: ../data/Gowalla/
         data_format: csv
-        train_data: ../data/AmazonBooks/amazonbooks_x0/train.csv
-        valid_data: ../data/AmazonBooks/amazonbooks_x0/test.csv
-        item_corpus: ../data/AmazonBooks/amazonbooks_x0/item_corpus.csv
+        train_data: ../data/Gowalla/gowalla_x0/train.csv
+        valid_data: ../data/Gowalla/gowalla_x0/test.csv
+        item_corpus: ../data/Gowalla/gowalla_x0/item_corpus.csv
         min_categr_count: 1
         query_index: query_index
         corpus_index: corpus_index
@@ -22,7 +22,7 @@ dataset_config:
         label_col: {name: label, dtype: float}
 
 tuner_space:
-    model_root: './AmazonBooks/SimpleX_amazonbooks_x0/'
+    model_root: './Gowalla/SimpleX_gowalla_x0/'
     learning_rate: 1.e-4
     embedding_dim: 64
     num_negs: [1000]

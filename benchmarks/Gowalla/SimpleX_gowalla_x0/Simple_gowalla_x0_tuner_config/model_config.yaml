@@ -2,7 +2,7 @@ SimpleX_gowalla_x0_001_698ea5d0:
     aggregator: mean
     attention_dropout: 0
     batch_size: 512
-    dataset_id: ml1m_x0_94bc464c
+    dataset_id: gowalla_x0_94bc464c
     debug_mode: false
     embedding_dim: 64
     embedding_regularizer: 1.0e-08
