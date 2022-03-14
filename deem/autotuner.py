@@ -21,7 +21,7 @@ import numpy as np
 import time
 import glob
 import hashlib
-from .utils import load_config, print_to_json
+from deem.utils import load_config, print_to_json
 
 # add this line to avoid weird characters in yaml files
 yaml.Dumper.ignore_aliases = lambda *args : True
@@ -34,7 +34,7 @@ def load_model_config(config_dir, experiment_id):
     found_keys = []
     for config in model_configs:
         with open(config, "r") as cfg:
-            config_dict = yaml.load(cfg)
+            config_dict = yaml.safe_load(cfg)
             if "Base" in config_dict:
                 params.update(config_dict["Base"])
                 found_keys.append("Base")
@@ -63,7 +63,7 @@ def load_dataset_config(config_dir, dataset_id):
 
 def enumerate_params(config_file, exclude_expid=[]):
     with open(config_file, "r") as cfg:
-        config_dict = yaml.load(cfg)
+        config_dict = yaml.safe_load(cfg)
     # tuning space
     tune_dict = config_dict["tuner_space"]
     for k, v in tune_dict.items():
@@ -148,7 +148,7 @@ def load_experiment_ids(config_dir):
     experiment_id_list = []
     for config in model_configs:
         with open(config, "r") as cfg:
-            config_dict = yaml.load(cfg)
+            config_dict = yaml.safe_load(cfg)
             experiment_id_list += config_dict.keys()
     return sorted(experiment_id_list)
 
@@ -166,7 +166,7 @@ def grid_search(version, config_dir, gpu_list):
                 cmd = "python -u benchmark_lightgbm.py --config {} --expid {} --gpu {}"\
                       .format(config_dir, expid, gpu_id)
             else:
-                cmd = "python -u benchmark.py --version {} --config {} --expid {} --gpu {}"\
+                cmd = "/root/miniconda3/bin/python -u benchmark.py --version {} --config {} --expid {} --gpu {}"\
                       .format(version, config_dir, expid, gpu_id)
             # print("Run cmd:", cmd)
             p = subprocess.Popen(cmd.split())

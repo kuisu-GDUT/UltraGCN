@@ -1,0 +1,81 @@
+2022-03-13 19:28:18,902 P10522 INFO {
+    "aggregator": "mean",
+    "attention_dropout": "0",
+    "batch_size": "512",
+    "corpus_index": "corpus_index",
+    "data_format": "csv",
+    "data_root": "../data/Lastfm/",
+    "dataset_id": "lastfm_x0_94bc464c",
+    "debug_mode": "False",
+    "embedding_dim": "64",
+    "embedding_regularizer": "1e-08",
+    "enable_bias": "False",
+    "epochs": "3",
+    "eval_interval_epochs": "1",
+    "feature_cols": "[{'active': True, 'dtype': 'int', 'name': 'query_index', 'type': 'index'}, {'active': True, 'dtype': 'int', 'name': 'corpus_index', 'type': 'index'}, {'active': True, 'dtype': 'str', 'name': 'user_id', 'source': 'user', 'type': 'categorical'}, {'active': True, 'dtype': 'str', 'embedding_callback': None, 'max_len': 500, 'name': 'user_history', 'padding': 'pre', 'source': 'user', 'splitter': '^', 'type': 'sequence'}, {'active': True, 'dtype': 'str', 'name': 'item_id', 'share_embedding': 'user_history', 'source': 'item', 'type': 'categorical'}]",
+    "fix_sampling_seeds": "False",
+    "gamma": "1",
+    "gpu": "0",
+    "ignore_pos_items": "False",
+    "item_corpus": "../data/Lastfm/lastfm_x0/item_corpus.csv",
+    "item_id_field": "item_id",
+    "label_col": "{'dtype': 'float', 'name': 'label'}",
+    "learning_rate": "0.0001",
+    "loss": "CosineContrastiveLoss",
+    "margin": "0.9",
+    "metrics": "['Recall(k=20)', 'Recall(k=50)', 'NDCG(k=20)', 'NDCG(k=50)', 'HitRate(k=20)', 'MAP(k=50)', 'MRP(k=20)', 'F1(k=20)']",
+    "min_categr_count": "1",
+    "model": "SimpleX",
+    "model_id": "SimpleX_lastfm_x0_001_0684ecca",
+    "model_root": "./Lastfm/SimpleX_lastfm_x0/",
+    "monitor": "Recall(k=20)",
+    "monitor_mode": "max",
+    "negative_weight": "150",
+    "net_dropout": "0.1",
+    "net_regularizer": "0",
+    "num_negs": "1000",
+    "num_workers": "3",
+    "optimizer": "adam",
+    "patience": "3",
+    "query_index": "query_index",
+    "sampling_num_process": "1",
+    "save_best_only": "True",
+    "seed": "2019",
+    "shuffle": "True",
+    "similarity_score": "cosine",
+    "train_data": "../data/Lastfm/lastfm_x0/train.csv",
+    "user_history_field": "user_history",
+    "user_id_field": "user_id",
+    "valid_data": "../data/Lastfm/lastfm_x0/test.csv",
+    "verbose": "0",
+    "version": "pytorch"
+}
+2022-03-13 19:28:18,903 P10522 INFO Set up feature encoder...
+2022-03-13 19:28:18,903 P10522 INFO Load feature_map from json: ../data/Lastfm/lastfm_x0_94bc464c/feature_map.json
+2022-03-13 19:28:18,921 P10522 INFO Total number of parameters: 371328.
+2022-03-13 19:28:18,921 P10522 INFO Loading data...
+2022-03-13 19:28:18,922 P10522 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/train.h5
+2022-03-13 19:28:18,936 P10522 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/item_corpus.h5
+2022-03-13 19:28:18,942 P10522 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/valid.h5
+2022-03-13 19:28:18,951 P10522 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/item_corpus.h5
+2022-03-13 19:28:18,952 P10522 INFO Train samples: total/30476, blocks/1
+2022-03-13 19:28:18,952 P10522 INFO Validation samples: total/521, blocks/1
+2022-03-13 19:28:18,952 P10522 INFO Loading train data done.
+2022-03-13 19:28:18,952 P10522 INFO **** Start training: 60 batches/epoch ****
+2022-03-13 19:28:18,952 P10522 INFO Negative sampling num_negs=1000
+2022-03-13 19:28:19,523 P10522 INFO Negative sampling done
+2022-03-13 19:28:33,990 P10522 INFO Train loss: 0.016689
+2022-03-13 19:28:33,991 P10522 INFO ************ Epoch=1 end ************
+2022-03-13 19:28:33,992 P10522 INFO Negative sampling num_negs=1000
+2022-03-13 19:28:34,571 P10522 INFO Negative sampling done
+2022-03-13 19:28:53,351 P10522 INFO Train loss: 0.016597
+2022-03-13 19:28:53,352 P10522 INFO ************ Epoch=2 end ************
+2022-03-13 19:28:53,352 P10522 INFO Negative sampling num_negs=1000
+2022-03-13 19:28:53,925 P10522 INFO Negative sampling done
+2022-03-13 19:29:07,626 P10522 INFO Train loss: 0.016244
+2022-03-13 19:29:07,627 P10522 INFO ************ Epoch=3 end ************
+2022-03-13 19:29:07,627 P10522 INFO Training finished.
+2022-03-13 19:29:07,627 P10522 INFO Load best model: /Users/kuisu/Documents/Project/Zhangxu/recommend System/TwoToweRS/benchmarks/Lastfm/SimpleX_lastfm_x0/lastfm_x0_94bc464c/SimpleX_lastfm_x0_001_0684ecca.model
+2022-03-13 19:29:07,627 P10522 INFO ****** Train/validation evaluation ******
+2022-03-13 19:29:07,627 P10522 INFO --- Start evaluation ---
+2022-03-13 19:29:43,724 P10522 INFO Evaluating metrics for 521 users...

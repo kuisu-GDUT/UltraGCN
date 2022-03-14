@@ -49,10 +49,16 @@ For reproducing the experiment result, you can run the benchmarking script with 
 
 ```bash
 cd benchmarks
+python run_param_tuner.py --config Lastfm/SimpleX_lastfm_x0/SimpleX_lastfm_x0_tuner_config.yaml --gpu 0
+
 python run_param_tuner.py --config Yelp18/SimpleX_yelp18_x0/SimpleX_yelp18_x0_tuner_config.yaml --gpu 0
 
-```
+python run_param_tuner.py --config AmazonBooks/SimpleX_amazonbooks_x0/SimpleX_amazonbooks_x0_tuner_config.yaml --gpu 0
 
+python run_param_tuner.py --config Ml1m/SimpleX_ml1m_x0/SimpleX_ml1m_x0_tuner_config.yaml --gpu 0
+
+python run_param_tuner.py --config Gowalla/SimpleX_gowalla_x0/SimpleX_gowalla_x0_tuner_config.yaml --gpu 0
+```
 
 
 

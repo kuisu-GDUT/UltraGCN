@@ -1,0 +1,132 @@
+2022-03-13 20:16:37,444 P12302 INFO {
+    "aggregator": "mean",
+    "attention_dropout": "0",
+    "batch_size": "512",
+    "corpus_index": "corpus_index",
+    "data_format": "csv",
+    "data_root": "../data/Lastfm/",
+    "dataset_id": "lastfm_x0_94bc464c",
+    "debug_mode": "False",
+    "embedding_dim": "64",
+    "embedding_regularizer": "1e-08",
+    "enable_bias": "False",
+    "epochs": "20",
+    "eval_interval_epochs": "1",
+    "feature_cols": "[{'active': True, 'dtype': 'int', 'name': 'query_index', 'type': 'index'}, {'active': True, 'dtype': 'int', 'name': 'corpus_index', 'type': 'index'}, {'active': True, 'dtype': 'str', 'name': 'user_id', 'source': 'user', 'type': 'categorical'}, {'active': True, 'dtype': 'str', 'embedding_callback': None, 'max_len': 500, 'name': 'user_history', 'padding': 'pre', 'source': 'user', 'splitter': '^', 'type': 'sequence'}, {'active': True, 'dtype': 'str', 'name': 'item_id', 'share_embedding': 'user_history', 'source': 'item', 'type': 'categorical'}]",
+    "fix_sampling_seeds": "False",
+    "gamma": "1",
+    "gpu": "0",
+    "ignore_pos_items": "False",
+    "item_corpus": "../data/Lastfm/lastfm_x0/item_corpus.csv",
+    "item_id_field": "item_id",
+    "label_col": "{'dtype': 'float', 'name': 'label'}",
+    "learning_rate": "0.0001",
+    "loss": "CosineContrastiveLoss",
+    "margin": "0.9",
+    "metrics": "['Recall(k=20)', 'Recall(k=50)', 'NDCG(k=20)', 'NDCG(k=50)', 'HitRate(k=20)', 'MAP(k=50)', 'MRR(k=20)', 'F1(k=20)']",
+    "min_categr_count": "1",
+    "model": "SimpleX",
+    "model_id": "SimpleX_lastfm_x0_001_ad9c4355",
+    "model_root": "./Lastfm/SimpleX_lastfm_x0/",
+    "monitor": "Recall(k=20)",
+    "monitor_mode": "max",
+    "negative_weight": "150",
+    "net_dropout": "0.1",
+    "net_regularizer": "0",
+    "num_negs": "1000",
+    "num_workers": "3",
+    "optimizer": "adam",
+    "patience": "3",
+    "query_index": "query_index",
+    "sampling_num_process": "1",
+    "save_best_only": "True",
+    "seed": "2019",
+    "shuffle": "True",
+    "similarity_score": "cosine",
+    "train_data": "../data/Lastfm/lastfm_x0/train.csv",
+    "user_history_field": "user_history",
+    "user_id_field": "user_id",
+    "valid_data": "../data/Lastfm/lastfm_x0/test.csv",
+    "verbose": "1",
+    "version": "pytorch"
+}
+2022-03-13 20:16:37,445 P12302 INFO Set up feature encoder...
+2022-03-13 20:16:37,445 P12302 INFO Load feature_map from json: ../data/Lastfm/lastfm_x0_94bc464c/feature_map.json
+2022-03-13 20:16:37,462 P12302 INFO Total number of parameters: 371328.
+2022-03-13 20:16:37,462 P12302 INFO Loading data...
+2022-03-13 20:16:37,463 P12302 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/train.h5
+2022-03-13 20:16:37,480 P12302 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/item_corpus.h5
+2022-03-13 20:16:37,486 P12302 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/valid.h5
+2022-03-13 20:16:37,495 P12302 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/item_corpus.h5
+2022-03-13 20:16:37,495 P12302 INFO Train samples: total/30476, blocks/1
+2022-03-13 20:16:37,496 P12302 INFO Validation samples: total/521, blocks/1
+2022-03-13 20:16:37,496 P12302 INFO Loading train data done.
+2022-03-13 20:16:37,496 P12302 INFO **** Start training: 60 batches/epoch ****
+2022-03-13 20:16:37,503 P12302 INFO Negative sampling num_negs=1000
+2022-03-13 20:16:38,074 P12302 INFO Negative sampling done
+2022-03-13 20:17:04,863 P12302 INFO --- Start evaluation ---
+2022-03-13 20:17:39,835 P12302 INFO Evaluating metrics for 521 users...
+2022-03-13 20:17:42,435 P12302 INFO [Metrics] Recall(k=20): 0.003210 - Recall(k=50): 0.006638 - NDCG(k=20): 0.003813 - NDCG(k=50): 0.005446 - HitRate(k=20): 0.063340 - MAP(k=50): 0.013664 - MRR(k=20): 0.013427 - F1(k=20): 0.003256
+2022-03-13 20:17:42,435 P12302 INFO Save best model: monitor(max): 0.003210
+2022-03-13 20:17:42,437 P12302 INFO --- 60/60 batches finished ---
+2022-03-13 20:17:57,448 P12302 INFO Train loss: 0.951755
+2022-03-13 20:17:57,448 P12302 INFO ************ Epoch=1 end ************
+2022-03-13 20:17:57,449 P12302 INFO Negative sampling num_negs=1000
+2022-03-13 20:17:58,034 P12302 INFO Negative sampling done
+2022-03-13 20:18:25,246 P12302 INFO --- Start evaluation ---
+2022-03-13 20:19:00,532 P12302 INFO Evaluating metrics for 521 users...
+2022-03-13 20:19:03,196 P12302 INFO [Metrics] Recall(k=20): 0.001735 - Recall(k=50): 0.003886 - NDCG(k=20): 0.001999 - NDCG(k=50): 0.003057 - HitRate(k=20): 0.023033 - MAP(k=50): 0.008734 - MRR(k=20): 0.008230 - F1(k=20): 0.001592
+2022-03-13 20:19:03,196 P12302 INFO Monitor(max) STOP: 0.001735 !
+2022-03-13 20:19:03,197 P12302 INFO Reduce learning rate on plateau: 0.000010
+2022-03-13 20:19:03,197 P12302 INFO Load best model: /Users/kuisu/Documents/Project/Zhangxu/recommend System/TwoToweRS/benchmarks/Lastfm/SimpleX_lastfm_x0/lastfm_x0_94bc464c/SimpleX_lastfm_x0_001_ad9c4355.model
+2022-03-13 20:19:03,199 P12302 INFO --- 60/60 batches finished ---
+2022-03-13 20:19:18,207 P12302 INFO Train loss: 0.415441
+2022-03-13 20:19:18,207 P12302 INFO ************ Epoch=2 end ************
+2022-03-13 20:19:18,208 P12302 INFO Negative sampling num_negs=1000
+2022-03-13 20:19:18,795 P12302 INFO Negative sampling done
+2022-03-13 20:19:46,287 P12302 INFO --- Start evaluation ---
+2022-03-13 20:20:21,458 P12302 INFO Evaluating metrics for 521 users...
+2022-03-13 20:20:24,081 P12302 INFO [Metrics] Recall(k=20): 0.003481 - Recall(k=50): 0.006542 - NDCG(k=20): 0.004032 - NDCG(k=50): 0.005384 - HitRate(k=20): 0.072937 - MAP(k=50): 0.013386 - MRR(k=20): 0.013699 - F1(k=20): 0.003596
+2022-03-13 20:20:24,082 P12302 INFO Save best model: monitor(max): 0.003481
+2022-03-13 20:20:24,084 P12302 INFO --- 60/60 batches finished ---
+2022-03-13 20:20:39,093 P12302 INFO Train loss: 0.541884
+2022-03-13 20:20:39,093 P12302 INFO ************ Epoch=3 end ************
+2022-03-13 20:20:39,094 P12302 INFO Negative sampling num_negs=1000
+2022-03-13 20:20:39,690 P12302 INFO Negative sampling done
+2022-03-13 20:21:07,284 P12302 INFO --- Start evaluation ---
+2022-03-13 20:21:43,222 P12302 INFO Evaluating metrics for 521 users...
+2022-03-13 20:21:45,843 P12302 INFO [Metrics] Recall(k=20): 0.003328 - Recall(k=50): 0.006013 - NDCG(k=20): 0.004122 - NDCG(k=50): 0.005232 - HitRate(k=20): 0.069098 - MAP(k=50): 0.014839 - MRR(k=20): 0.015750 - F1(k=20): 0.003425
+2022-03-13 20:21:45,843 P12302 INFO Monitor(max) STOP: 0.003328 !
+2022-03-13 20:21:45,843 P12302 INFO Reduce learning rate on plateau: 0.000001
+2022-03-13 20:21:45,843 P12302 INFO Load best model: /Users/kuisu/Documents/Project/Zhangxu/recommend System/TwoToweRS/benchmarks/Lastfm/SimpleX_lastfm_x0/lastfm_x0_94bc464c/SimpleX_lastfm_x0_001_ad9c4355.model
+2022-03-13 20:21:45,846 P12302 INFO --- 60/60 batches finished ---
+2022-03-13 20:22:00,858 P12302 INFO Train loss: 0.457084
+2022-03-13 20:22:00,859 P12302 INFO ************ Epoch=4 end ************
+2022-03-13 20:22:00,860 P12302 INFO Negative sampling num_negs=1000
+2022-03-13 20:22:01,475 P12302 INFO Negative sampling done
+2022-03-13 20:22:28,358 P12302 INFO --- Start evaluation ---
+2022-03-13 20:23:04,087 P12302 INFO Evaluating metrics for 521 users...
+2022-03-13 20:23:06,747 P12302 INFO [Metrics] Recall(k=20): 0.003481 - Recall(k=50): 0.006542 - NDCG(k=20): 0.004054 - NDCG(k=50): 0.005392 - HitRate(k=20): 0.072937 - MAP(k=50): 0.013476 - MRR(k=20): 0.013836 - F1(k=20): 0.003596
+2022-03-13 20:23:06,748 P12302 INFO Monitor(max) STOP: 0.003481 !
+2022-03-13 20:23:06,748 P12302 INFO Reduce learning rate on plateau: 0.000001
+2022-03-13 20:23:06,748 P12302 INFO Load best model: /Users/kuisu/Documents/Project/Zhangxu/recommend System/TwoToweRS/benchmarks/Lastfm/SimpleX_lastfm_x0/lastfm_x0_94bc464c/SimpleX_lastfm_x0_001_ad9c4355.model
+2022-03-13 20:23:06,751 P12302 INFO --- 60/60 batches finished ---
+2022-03-13 20:23:21,762 P12302 INFO Train loss: 0.478799
+2022-03-13 20:23:21,763 P12302 INFO ************ Epoch=5 end ************
+2022-03-13 20:23:21,764 P12302 INFO Negative sampling num_negs=1000
+2022-03-13 20:23:22,373 P12302 INFO Negative sampling done
+2022-03-13 20:23:49,385 P12302 INFO --- Start evaluation ---
+2022-03-13 20:24:24,781 P12302 INFO Evaluating metrics for 521 users...
+2022-03-13 20:24:27,427 P12302 INFO [Metrics] Recall(k=20): 0.003481 - Recall(k=50): 0.006542 - NDCG(k=20): 0.004032 - NDCG(k=50): 0.005375 - HitRate(k=20): 0.072937 - MAP(k=50): 0.013353 - MRR(k=20): 0.013699 - F1(k=20): 0.003596
+2022-03-13 20:24:27,427 P12302 INFO Monitor(max) STOP: 0.003481 !
+2022-03-13 20:24:27,427 P12302 INFO Reduce learning rate on plateau: 0.000001
+2022-03-13 20:24:27,427 P12302 INFO Load best model: /Users/kuisu/Documents/Project/Zhangxu/recommend System/TwoToweRS/benchmarks/Lastfm/SimpleX_lastfm_x0/lastfm_x0_94bc464c/SimpleX_lastfm_x0_001_ad9c4355.model
+2022-03-13 20:24:27,430 P12302 INFO Early stopping at epoch=6
+2022-03-13 20:24:27,430 P12302 INFO --- 60/60 batches finished ---
+2022-03-13 20:24:42,440 P12302 INFO Train loss: 0.478794
+2022-03-13 20:24:42,442 P12302 INFO Training finished.
+2022-03-13 20:24:42,442 P12302 INFO Load best model: /Users/kuisu/Documents/Project/Zhangxu/recommend System/TwoToweRS/benchmarks/Lastfm/SimpleX_lastfm_x0/lastfm_x0_94bc464c/SimpleX_lastfm_x0_001_ad9c4355.model
+2022-03-13 20:24:42,448 P12302 INFO ****** Train/validation evaluation ******
+2022-03-13 20:24:42,449 P12302 INFO --- Start evaluation ---
+2022-03-13 20:25:17,650 P12302 INFO Evaluating metrics for 521 users...
+2022-03-13 20:25:20,297 P12302 INFO [Metrics] Recall(k=20): 0.003481 - Recall(k=50): 0.006542 - NDCG(k=20): 0.004032 - NDCG(k=50): 0.005384 - HitRate(k=20): 0.072937 - MAP(k=50): 0.013386 - MRR(k=20): 0.013699 - F1(k=20): 0.003596

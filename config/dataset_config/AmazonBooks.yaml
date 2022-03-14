@@ -1,6 +1,6 @@
 ### AmazonBooks dataset
 
-# amazon_books_x0 follows the setting in LightGCN 
+# amazonbooks_x0 follows the setting in LightGCN
 amazonbooks_x0:
     data_root: ../data/AmazonBooks/
     data_format: csv

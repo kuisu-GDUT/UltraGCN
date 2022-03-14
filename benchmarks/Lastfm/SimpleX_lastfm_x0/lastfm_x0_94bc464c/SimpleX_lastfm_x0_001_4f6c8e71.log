@@ -1,0 +1,137 @@
+2022-03-13 19:51:44,407 P11467 INFO {
+    "aggregator": "mean",
+    "attention_dropout": "0",
+    "batch_size": "512",
+    "corpus_index": "corpus_index",
+    "data_format": "csv",
+    "data_root": "../data/Lastfm/",
+    "dataset_id": "lastfm_x0_94bc464c",
+    "debug_mode": "False",
+    "embedding_dim": "64",
+    "embedding_regularizer": "1e-08",
+    "enable_bias": "False",
+    "epochs": "20",
+    "eval_interval_epochs": "1",
+    "feature_cols": "[{'active': True, 'dtype': 'int', 'name': 'query_index', 'type': 'index'}, {'active': True, 'dtype': 'int', 'name': 'corpus_index', 'type': 'index'}, {'active': True, 'dtype': 'str', 'name': 'user_id', 'source': 'user', 'type': 'categorical'}, {'active': True, 'dtype': 'str', 'embedding_callback': None, 'max_len': 500, 'name': 'user_history', 'padding': 'pre', 'source': 'user', 'splitter': '^', 'type': 'sequence'}, {'active': True, 'dtype': 'str', 'name': 'item_id', 'share_embedding': 'user_history', 'source': 'item', 'type': 'categorical'}]",
+    "fix_sampling_seeds": "False",
+    "gamma": "1",
+    "gpu": "0",
+    "ignore_pos_items": "False",
+    "item_corpus": "../data/Lastfm/lastfm_x0/item_corpus.csv",
+    "item_id_field": "item_id",
+    "label_col": "{'dtype': 'float', 'name': 'label'}",
+    "learning_rate": "0.0001",
+    "loss": "CosineContrastiveLoss",
+    "margin": "0.9",
+    "metrics": "['Recall(k=20)', 'Recall(k=50)', 'NDCG(k=20)', 'NDCG(k=50)', 'HitRate(k=20)', 'MAP(k=50)', 'MRR(k=20)', 'F1(k=20)']",
+    "min_categr_count": "1",
+    "model": "SimpleX",
+    "model_id": "SimpleX_lastfm_x0_001_4f6c8e71",
+    "model_root": "./Lastfm/SimpleX_lastfm_x0/",
+    "monitor": "Recall(k=20)",
+    "monitor_mode": "max",
+    "negative_weight": "150",
+    "net_dropout": "0.1",
+    "net_regularizer": "0",
+    "num_negs": "100",
+    "num_workers": "3",
+    "optimizer": "adam",
+    "patience": "3",
+    "query_index": "query_index",
+    "sampling_num_process": "1",
+    "save_best_only": "False",
+    "seed": "2019",
+    "shuffle": "True",
+    "similarity_score": "cosine",
+    "train_data": "../data/Lastfm/lastfm_x0/train.csv",
+    "user_history_field": "user_history",
+    "user_id_field": "user_id",
+    "valid_data": "../data/Lastfm/lastfm_x0/test.csv",
+    "verbose": "0",
+    "version": "pytorch"
+}
+2022-03-13 19:51:44,407 P11467 INFO Set up feature encoder...
+2022-03-13 19:51:44,407 P11467 INFO Load feature_map from json: ../data/Lastfm/lastfm_x0_94bc464c/feature_map.json
+2022-03-13 19:51:44,425 P11467 INFO Total number of parameters: 371328.
+2022-03-13 19:51:44,425 P11467 INFO Loading data...
+2022-03-13 19:51:44,425 P11467 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/train.h5
+2022-03-13 19:51:44,436 P11467 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/item_corpus.h5
+2022-03-13 19:51:44,442 P11467 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/valid.h5
+2022-03-13 19:51:44,449 P11467 INFO Loading data from h5: ../data/Lastfm/lastfm_x0_94bc464c/item_corpus.h5
+2022-03-13 19:51:44,450 P11467 INFO Train samples: total/30476, blocks/1
+2022-03-13 19:51:44,450 P11467 INFO Validation samples: total/521, blocks/1
+2022-03-13 19:51:44,450 P11467 INFO Loading train data done.
+2022-03-13 19:51:44,450 P11467 INFO **** Start training: 10 batches/epoch ****
+2022-03-13 19:51:44,450 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:51:44,506 P11467 INFO Negative sampling done
+2022-03-13 19:51:57,147 P11467 INFO Train loss: 0.100136
+2022-03-13 19:51:57,148 P11467 INFO --- Start evaluation ---
+2022-03-13 19:52:32,370 P11467 INFO Evaluating metrics for 521 users...
+2022-03-13 19:52:34,978 P11467 INFO [Metrics] Recall(k=20): 0.002887 - Recall(k=50): 0.015881 - NDCG(k=20): 0.002920 - NDCG(k=50): 0.010000 - HitRate(k=20): 0.053743 - MAP(k=50): 0.017010 - MRR(k=20): 0.009833 - F1(k=20): 0.002597
+2022-03-13 19:52:34,979 P11467 INFO ************ Epoch=1 end ************
+2022-03-13 19:52:34,979 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:52:35,043 P11467 INFO Negative sampling done
+2022-03-13 19:52:57,941 P11467 INFO Train loss: 0.098288
+2022-03-13 19:52:57,942 P11467 INFO ************ Epoch=2 end ************
+2022-03-13 19:52:57,942 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:52:58,000 P11467 INFO Negative sampling done
+2022-03-13 19:53:15,852 P11467 INFO Train loss: 0.098825
+2022-03-13 19:53:15,852 P11467 INFO ************ Epoch=3 end ************
+2022-03-13 19:53:15,852 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:53:15,911 P11467 INFO Negative sampling done
+2022-03-13 19:53:28,824 P11467 INFO Train loss: 0.098577
+2022-03-13 19:53:28,824 P11467 INFO --- Start evaluation ---
+2022-03-13 19:54:04,097 P11467 INFO Evaluating metrics for 521 users...
+2022-03-13 19:54:06,730 P11467 INFO [Metrics] Recall(k=20): 0.002530 - Recall(k=50): 0.009596 - NDCG(k=20): 0.002683 - NDCG(k=50): 0.006488 - HitRate(k=20): 0.055662 - MAP(k=50): 0.012755 - MRR(k=20): 0.008242 - F1(k=20): 0.002596
+2022-03-13 19:54:06,730 P11467 INFO ************ Epoch=4 end ************
+2022-03-13 19:54:06,730 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:54:06,796 P11467 INFO Negative sampling done
+2022-03-13 19:54:29,471 P11467 INFO Train loss: 0.096290
+2022-03-13 19:54:29,472 P11467 INFO ************ Epoch=5 end ************
+2022-03-13 19:54:29,472 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:54:29,544 P11467 INFO Negative sampling done
+2022-03-13 19:54:47,351 P11467 INFO Train loss: 0.096222
+2022-03-13 19:54:47,351 P11467 INFO ************ Epoch=6 end ************
+2022-03-13 19:54:47,352 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:54:47,424 P11467 INFO Negative sampling done
+2022-03-13 19:55:05,118 P11467 INFO Train loss: 0.095951
+2022-03-13 19:55:05,119 P11467 INFO --- Start evaluation ---
+2022-03-13 19:55:40,243 P11467 INFO Evaluating metrics for 521 users...
+2022-03-13 19:55:42,852 P11467 INFO [Metrics] Recall(k=20): 0.002996 - Recall(k=50): 0.012711 - NDCG(k=20): 0.003043 - NDCG(k=50): 0.008058 - HitRate(k=20): 0.065259 - MAP(k=50): 0.013273 - MRR(k=20): 0.008372 - F1(k=20): 0.003148
+2022-03-13 19:55:42,852 P11467 INFO ************ Epoch=7 end ************
+2022-03-13 19:55:42,853 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:55:42,919 P11467 INFO Negative sampling done
+2022-03-13 19:55:55,701 P11467 INFO Train loss: 0.094082
+2022-03-13 19:55:55,701 P11467 INFO ************ Epoch=8 end ************
+2022-03-13 19:55:55,701 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:55:55,768 P11467 INFO Negative sampling done
+2022-03-13 19:56:13,578 P11467 INFO Train loss: 0.094496
+2022-03-13 19:56:13,578 P11467 INFO ************ Epoch=9 end ************
+2022-03-13 19:56:13,578 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:56:13,644 P11467 INFO Negative sampling done
+2022-03-13 19:56:36,387 P11467 INFO Train loss: 0.094856
+2022-03-13 19:56:36,388 P11467 INFO --- Start evaluation ---
+2022-03-13 19:57:11,573 P11467 INFO Evaluating metrics for 521 users...
+2022-03-13 19:57:14,202 P11467 INFO [Metrics] Recall(k=20): 0.002549 - Recall(k=50): 0.012847 - NDCG(k=20): 0.002537 - NDCG(k=50): 0.007939 - HitRate(k=20): 0.057582 - MAP(k=50): 0.011970 - MRR(k=20): 0.006508 - F1(k=20): 0.002699
+2022-03-13 19:57:14,202 P11467 INFO ************ Epoch=10 end ************
+2022-03-13 19:57:14,203 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:57:14,266 P11467 INFO Negative sampling done
+2022-03-13 19:57:36,983 P11467 INFO Train loss: 0.090709
+2022-03-13 19:57:36,984 P11467 INFO ************ Epoch=11 end ************
+2022-03-13 19:57:36,984 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:57:37,056 P11467 INFO Negative sampling done
+2022-03-13 19:57:59,920 P11467 INFO Train loss: 0.093057
+2022-03-13 19:57:59,921 P11467 INFO ************ Epoch=12 end ************
+2022-03-13 19:57:59,922 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:57:59,994 P11467 INFO Negative sampling done
+2022-03-13 19:58:22,741 P11467 INFO Train loss: 0.090072
+2022-03-13 19:58:22,742 P11467 INFO --- Start evaluation ---
+2022-03-13 19:58:57,960 P11467 INFO Evaluating metrics for 521 users...
+2022-03-13 19:59:00,588 P11467 INFO [Metrics] Recall(k=20): 0.002497 - Recall(k=50): 0.010514 - NDCG(k=20): 0.002767 - NDCG(k=50): 0.006966 - HitRate(k=20): 0.055662 - MAP(k=50): 0.012839 - MRR(k=20): 0.008246 - F1(k=20): 0.002677
+2022-03-13 19:59:00,589 P11467 INFO ************ Epoch=13 end ************
+2022-03-13 19:59:00,589 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:59:00,654 P11467 INFO Negative sampling done
+2022-03-13 19:59:13,430 P11467 INFO Train loss: 0.092867
+2022-03-13 19:59:13,431 P11467 INFO ************ Epoch=14 end ************
+2022-03-13 19:59:13,431 P11467 INFO Negative sampling num_negs=100
+2022-03-13 19:59:13,502 P11467 INFO Negative sampling done

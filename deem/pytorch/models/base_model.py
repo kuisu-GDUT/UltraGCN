@@ -18,12 +18,12 @@ class BaseModel(nn.Module):
                  monitor="AUC", 
                  save_best_only=True, 
                  monitor_mode="max", 
-                 patience=2, 
+                 patience=11,#当11个batch，loss无下降，则暂停。
                  eval_interval_epochs=1, 
                  embedding_regularizer=None, 
                  net_regularizer=None, 
                  reduce_lr_on_plateau=True, 
-                 embedding_initializer="lambda w: nn.init.normal_(w, std=1e-4)", 
+                 embedding_initializer="lambda w: nn.init.normal_(w, std=1e-4)",
                  num_negs=0,
                  **kwargs):
         super(BaseModel, self).__init__()
@@ -123,11 +123,11 @@ class BaseModel(nn.Module):
 
     def on_batch_end(self, train_generator, batch_index, logs={}):
         self._total_batches += 1
-        if (batch_index + 1) % self._eval_interval_batches == 0 or (batch_index + 1) % self._batches_per_epoch == 0:
+        if (batch_index + 1) % self._eval_interval_batches == 0 or (batch_index + 1) % self._batches_per_epoch == 0:#每60个epoch保存一次模型
             val_logs = self.evaluate(train_generator, self.valid_gen)
             epoch = round(float(self._total_batches) / self._batches_per_epoch, 2)
-            self.checkpoint_and_earlystop(epoch, val_logs)
-            logging.info("--- {}/{} batches finished ---".format(batch_index + 1, self._batches_per_epoch))
+            # self.checkpoint_and_earlystop(epoch, val_logs)
+            # logging.info("--- {}/{} batches finished ---".format(batch_index + 1, self._batches_per_epoch))
 
     def reduce_learning_rate(self, factor=0.1, min_lr=1e-6):
         for param_group in self.optimizer.param_groups:
@@ -137,6 +137,8 @@ class BaseModel(nn.Module):
 
     def checkpoint_and_earlystop(self, epoch, logs, min_delta=1e-6):
         monitor_value = self._monitor.get_value(logs)
+        # print("save model: {}".format(self.checkpoint))
+        # self.save_weights(self.checkpoint)
         if (self._monitor_mode == "min" and monitor_value > self._best_metric - min_delta) or \
            (self._monitor_mode == "max" and monitor_value < self._best_metric + min_delta):
             self._stopping_steps += 1
@@ -150,8 +152,8 @@ class BaseModel(nn.Module):
             self._stopping_steps = 0
             self._best_metric = monitor_value
             if self._save_best_only:
-                logging.info("Save best model: monitor({}): {:.6f}"\
-                             .format(self._monitor_mode, monitor_value))
+                # logging.info("Save best model: monitor({}): {:.6f}"\
+                #              .format(self._monitor_mode, monitor_value))
                 self.save_weights(self.checkpoint)
         if self._stopping_steps * self._eval_interval_epochs >= self._patience:
             self._stop_training = True
@@ -174,14 +176,17 @@ class BaseModel(nn.Module):
         logging.info("**** Start training: {} batches/epoch ****".format(self._batches_per_epoch))
         for epoch in range(epochs):
             epoch_loss = self.train_on_epoch(train_generator, epoch)
-            logging.info("Train loss: {:.6f}".format(epoch_loss))
-            if self._stop_training:
-                break
-            else:
-                logging.info("************ Epoch={} end ************".format(epoch + 1))
-        logging.info("Training finished.")
-        logging.info("Load best model: {}".format(self.checkpoint))
-        self.load_weights(self.checkpoint)
+            # logging.info("Train loss: {:.6f}".format(epoch_loss))
+            logging.info("EPOCH[{}/{}] train loss: {:.6f}".format(epoch,epochs,epoch_loss))
+            if epoch%10 == 0:
+                self.evaluate(train_generator,valid_generator)
+            # if self._stop_training:
+            #     break
+            # else:
+            #     logging.info("************ Epoch={} end ************".format(epoch + 1))
+        # logging.info("Training finished.")
+        # logging.info("Load best model: {}".format(self.checkpoint))
+        # self.load_weights(self.checkpoint)
 
     def train_on_epoch(self, train_generator, epoch):
         epoch_loss = 0
@@ -197,13 +202,14 @@ class BaseModel(nn.Module):
             nn.utils.clip_grad_norm_(self.parameters(), self._max_gradient_norm)
             self.optimizer.step()
             epoch_loss += loss.item()
-            self.on_batch_end(train_generator, batch_index)
+            # self.on_batch_end(train_generator, batch_index)
+            # print("run",batch_index,":",loss)
             if self._stop_training:
                 break
         return epoch_loss / self._batches_per_epoch
 
     def evaluate(self, train_generator, valid_generator):
-        logging.info("--- Start evaluation ---")
+        # logging.info("--- Start evaluation ---")
         self.eval()  # set to evaluation mode
         with torch.no_grad():
             user_vecs = []

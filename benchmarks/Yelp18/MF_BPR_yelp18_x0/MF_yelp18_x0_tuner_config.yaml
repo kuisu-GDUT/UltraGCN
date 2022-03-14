@@ -20,7 +20,7 @@ dataset_config:
         label_col: {name: label, dtype: float}
 
 tuner_space:
-    model_root: './Yelp18/MF_BPR_yelp18_x0/'
+    model_root: './Yelp18/MF_BPR_amazon-book_x0/'
     learning_rate: 1.e-3
     embedding_dim: 64
     embedding_dropout: 0

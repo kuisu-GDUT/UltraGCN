@@ -1,0 +1,18 @@
+yelp18_x0_9217a019:
+    corpus_index: corpus_index
+    data_format: csv
+    data_root: ../data/Yelp18/
+    feature_cols:
+    - {active: true, dtype: int, name: query_index, type: index}
+    - {active: true, dtype: int, name: corpus_index, type: index}
+    - {active: true, dtype: str, name: user_id, source: user, type: categorical}
+    - {active: true, dtype: str, embedding_callback: null, max_len: 500, name: user_history,
+        padding: pre, source: user, splitter: ^, type: sequence}
+    - {active: true, dtype: str, name: item_id, share_embedding: user_history, source: item,
+        type: categorical}
+    item_corpus: ../data/Yelp18/yelp18_x0/item_corpus.csv
+    label_col: {dtype: float, name: label}
+    min_categr_count: 1
+    query_index: query_index
+    train_data: ../data/Yelp18/yelp18_x0/train.csv
+    valid_data: ../data/Yelp18/yelp18_x0/test.csv

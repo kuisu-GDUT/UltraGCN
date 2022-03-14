@@ -22,7 +22,7 @@ dataset_config:
         label_col: {name: label, dtype: float}
 
 tuner_space:
-    model_root: './Yelp18/SimpleX_yelp18_x0/'
+    model_root: './Yelp18/SimpleX_amazonbooks_x0/'
     learning_rate: 1.e-4
     embedding_dim: 64
     num_negs: [1000]

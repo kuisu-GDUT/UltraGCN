@@ -39,7 +39,15 @@ def evaluate_metrics(user_embs,
                                  valid_user2items, metric_callers, max_topk)
     average_result = np.average(np.array(results), axis=0).tolist()
     return_dict = dict(zip(metrics, average_result))
-    logging.info('[Metrics] ' + ' - '.join('{}: {:.6f}'.format(k, v) for k, v in zip(metrics, average_result)))
+    results = {}
+    for key,value in return_dict.items():
+        name = key.split("(")[0]
+        if name in results:
+            results[name].append(value)
+        else:
+            results[name]=[value]
+    logging.info(results)
+    # logging.info('[Metrics] ' + ' - '.join('{}: {:.6f}'.format(k, v) for k, v in zip(metrics, average_result)))
     return return_dict
 
 

@@ -131,15 +131,19 @@ class TrainGenerator(DataLoader):
     def __iter__(self):
         self.negative_sampling()
         iter = super(TrainGenerator, self).__iter__()
-        while True:
-            yield next(iter) # a batch iterator
+        #
+        try:
+            while True:
+                yield next(iter) # a batch iterator
+        except:
+            return None
 
     def __len__(self):
         return self.num_batches
 
     def negative_sampling(self):
         if self.num_negs > 0:
-            logging.info("Negative sampling num_negs={}".format(self.num_negs))
+            # logging.info("Negative sampling num_negs={}".format(self.num_negs))#todo Negative sampling
             sampling_probs = None # set it to item popularity when using importance sampling
             if self.sampling_num_process > 1:
                 chunked_query_indexes = np.array_split(self.query_indexes, self.sampling_num_process)
@@ -174,7 +178,7 @@ class TrainGenerator(DataLoader):
                                                   self.ignore_pos_items)
             self.dataset.all_item_indexes = np.hstack([self.dataset.pos_item_indexes.reshape(-1, 1), 
                                                        neg_item_indexes])
-            logging.info("Negative sampling done")
+            # logging.info("Negative sampling done")
 
 
 class TestDataset(Dataset):
